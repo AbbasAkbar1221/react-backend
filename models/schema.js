@@ -1,0 +1,24 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const BlogPostReact = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    summary: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    author:{
+        type: String,
+        required: true
+    }
+}, { timestamps: true });
+
+const BlogPostModel = mongoose.model('BlogPostReact', BlogPostReact, 'blogsReact');
+module.exports = BlogPostModel;
