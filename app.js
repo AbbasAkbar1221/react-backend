@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 3080;
 const blogRoutes = require('./routes/blogRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 app.use(cors());
 
@@ -55,6 +56,8 @@ app.get('/' , (req, res)=>{
 })
 
 app.use('/blogs', blogRoutes);
+
+app.use('/auth', authRoutes);
 
 // app.get('/blogs' , (req , res)=>{
 //     BlogPostReact.find().sort({createdAt: -1 })
