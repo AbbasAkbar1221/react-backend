@@ -1,4 +1,4 @@
-const user = require('../models/user');
+const user = require('../models/userschema');
 
 function signup(req, res)  {
     const obj = req.body;

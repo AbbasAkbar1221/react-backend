@@ -1,4 +1,4 @@
-const BlogPostReact = require('../models/blogPost');
+const BlogPostReact = require('../models/schema');
 
 const blog_index_get = (req , res)=>{
     BlogPostReact.find().sort({createdAt: -1 })

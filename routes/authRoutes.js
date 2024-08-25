@@ -17,3 +17,5 @@ router.post('/signup' , authController.signup);
 router.get('/logout' , (req , res)=>{
     res.send("Logout Page");
 })
+
+module.exports = router;
