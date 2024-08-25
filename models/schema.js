@@ -6,7 +6,7 @@ const BlogPostReact = new Schema({
         type: String,
         required: true
     },
-    summary: {
+    sector: {
         type: String,
         required: true
     },

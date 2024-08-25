@@ -51,7 +51,7 @@ mongoose.connect(DB_URI)
 // }
 
 app.get('/' , (req, res)=>{
-    res.send("Home Page");
+    res.send("Home Page / default page");
 })
 
 app.get('/blogs' , (req , res)=>{
