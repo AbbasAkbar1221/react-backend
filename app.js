@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const port = 3080;
-const BlogPostReact = require('./models/schema')
+const blogRoutes = require('./routes/blogRoutes');
 
 app.use(cors());
 
@@ -54,51 +54,53 @@ app.get('/' , (req, res)=>{
     res.send("Home Page / default page");
 })
 
-app.get('/blogs' , (req , res)=>{
-    BlogPostReact.find().sort({createdAt: -1 })
-    .then((blogs)=>{
-        res.json(blogs);
-    })
-    .catch((error)=>{
-        res.status(500).send("Error retrieving blogs");
-    })
-})
+app.use('/blogs', blogRoutes);
 
-app.get('/blogs/id/:id' , (req , res)=>{
-    BlogPostReact.findById(req.params.id)
-    .then((blog)=>{
-        if(!blog){
-            return res.status(404).send("blog not found");
-        }
-        res.json(blog);
-    })
-    .catch((err)=>{
-        res.status(500).send('Error retrieving the blog');   
-    })
-})
+// app.get('/blogs' , (req , res)=>{
+//     BlogPostReact.find().sort({createdAt: -1 })
+//     .then((blogs)=>{
+//         res.json(blogs);
+//     })
+//     .catch((error)=>{
+//         res.status(500).send("Error retrieving blogs");
+//     })
+// })
 
-app.post('/blogs' , (req , res)=>{
-    const blog = req.body;
-    BlogPostReact.create(blog)
-    .then((createdBlog)=>{
-        res.status(201).json(createdBlog);
-    })
-    .catch((err)=>{
-        res.status(500).send('Error creating the blog'); 
-    })
-})
+// app.get('/blogs/id/:id' , (req , res)=>{
+//     BlogPostReact.findById(req.params.id)
+//     .then((blog)=>{
+//         if(!blog){
+//             return res.status(404).send("blog not found");
+//         }
+//         res.json(blog);
+//     })
+//     .catch((err)=>{
+//         res.status(500).send('Error retrieving the blog');   
+//     })
+// })
 
-app.delete('/blogs/id/:id' , (req , res)=>{
-    BlogPostReact.findByIdAndDelete(req.params.id)
-    .then((deletedBlog)=>{
-        if(!deletedBlog){
-            return res.status(404).send("blog not found");
-        }
-        res.json(deletedBlog);
-    })
-    .catch((err)=>{
-        res.status(500).send('Error deleting the blog');
+// app.post('/blogs' , (req , res)=>{
+//     const blog = req.body;
+//     BlogPostReact.create(blog)
+//     .then((createdBlog)=>{
+//         res.status(201).json(createdBlog);
+//     })
+//     .catch((err)=>{
+//         res.status(500).send('Error creating the blog'); 
+//     })
+// })
+
+// app.delete('/blogs/id/:id' , (req , res)=>{
+//     BlogPostReact.findByIdAndDelete(req.params.id)
+//     .then((deletedBlog)=>{
+//         if(!deletedBlog){
+//             return res.status(404).send("blog not found");
+//         }
+//         res.json(deletedBlog);
+//     })
+//     .catch((err)=>{
+//         res.status(500).send('Error deleting the blog');
         
-    })
-})
+//     })
+// })
 
