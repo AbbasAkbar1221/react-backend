@@ -6,11 +6,11 @@ const BlogPostReact = new Schema({
         type: String,
         required: true
     },
-    sector: {
+    content: {
         type: String,
         required: true
     },
-    content: {
+    sector: {
         type: String,
         required: true
     },
